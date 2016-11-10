@@ -128,12 +128,12 @@
         "source": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable-mdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
     },
     {
-        "merged": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
-        "source": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable-mdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
-    },
-    {
         "merged": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
         "source": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable-mdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable-mdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
