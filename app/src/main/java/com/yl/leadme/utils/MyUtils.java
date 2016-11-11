@@ -9,7 +9,7 @@ import java.io.InputStream;
  * <p>
  * Created by yl on 2016/10/30.
  * <p>
- * 描述:
+ * 描述:我的工具类
  */
 
 

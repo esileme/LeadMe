@@ -46,13 +46,17 @@ public class MembersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
    * 设置成员列表，然后更新索引
    * 此处会对数据以 空格、数字、字母（汉字转化为拼音后的字母） 的顺序进行重新排列
    */
-  public void setMemberList(List<LCChatKitUser> userList) throws PinyinException {
+  public void setMemberList(List<LCChatKitUser> userList) {
     memberList.clear();
     if (null != userList) {
       for (LCChatKitUser user : userList) {
         MemberItem item = new MemberItem();
         item.lcChatKitUser = user;
-        item.sortContent = PinyinHelper.convertToPinyinString(user.getUserName(), "", PinyinFormat.WITHOUT_TONE);
+        try {
+          item.sortContent = PinyinHelper.convertToPinyinString(user.getUserName(), "", PinyinFormat.WITHOUT_TONE);
+        } catch (PinyinException e) {
+          e.printStackTrace();
+        }
         memberList.add(item);
       }
     }

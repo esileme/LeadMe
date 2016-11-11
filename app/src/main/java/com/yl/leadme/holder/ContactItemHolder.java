@@ -16,9 +16,7 @@ import cn.leancloud.chatkit.activity.LCIMConversationActivity;
 import cn.leancloud.chatkit.utils.LCIMConstants;
 import cn.leancloud.chatkit.viewholder.LCIMCommonViewHolder;
 
-/**
- * Created by wli on 15/11/24.
- */
+
 public class ContactItemHolder extends LCIMCommonViewHolder<LCChatKitUser> {
 
   TextView nameView;

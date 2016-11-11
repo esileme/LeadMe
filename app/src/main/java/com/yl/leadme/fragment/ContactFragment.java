@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.stuxuhai.jpinyin.PinyinException;
 import com.yl.leadme.R;
 import com.yl.leadme.adapter.MembersAdapter;
 import com.yl.leadme.event.MemberLetterEvent;
@@ -19,7 +18,7 @@ import cn.leancloud.chatkit.view.LCIMDividerItemDecoration;
 import de.greenrobot.event.EventBus;
 
 /**
- * Created by wli on 15/12/4.
+ *
  * 联系人页面
  */
 public class ContactFragment extends Fragment {
@@ -66,11 +65,7 @@ public class ContactFragment extends Fragment {
   }
 
   private void refreshMembers() {
-    try {
-      itemAdapter.setMemberList(CustomUserProvider.getInstance().getAllUsers());
-    } catch (PinyinException e) {
-      e.printStackTrace();
-    }
+    itemAdapter.setMemberList(CustomUserProvider.getInstance().getAllUsers());
     itemAdapter.notifyDataSetChanged();
     refreshLayout.setRefreshing(false);
   }

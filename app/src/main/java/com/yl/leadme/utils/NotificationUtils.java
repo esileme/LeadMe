@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by wli on 15/8/26.
+ * 通知工具类
  */
 public class NotificationUtils {
 

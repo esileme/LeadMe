@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -37,7 +38,7 @@ import cn.leancloud.chatkit.activity.LCIMConversationActivity;
 import cn.leancloud.chatkit.activity.LCIMConversationListFragment;
 import cn.leancloud.chatkit.utils.LCIMConstants;
 
-public class MainActivity extends AVBaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     /**
      * 上一次点击 back 键的时间
@@ -319,20 +320,7 @@ public class MainActivity extends AVBaseActivity {
                     }
                 });
     }
-    /*private void gotoSquareConversation() {
-        AVImClientManager.getInstance().open("123456", new AVIMClientCallback() {
-            @Override
-            public void done(AVIMClient avimClient, AVIMException e) {
-                if(filterException(e)){
-                    Intent intent = new Intent(MainActivity.this, AVSquareActivity.class);
-                    intent.putExtra(Constants.CONVERSATION_ID, Constants.SQUARE_CONVERSATION_ID);
-                    intent.putExtra(Constants.ACTIVITY_TITLE, getString(R.string.square));
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        });
-    }*/
+
 
 
     /**

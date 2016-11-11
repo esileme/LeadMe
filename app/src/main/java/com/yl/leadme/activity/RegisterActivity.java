@@ -30,6 +30,7 @@ import com.yl.leadme.utils.MyUtils;
 
 import cn.leancloud.chatkit.LCChatKit;
 
+
 /**
  * =================================
  * <p>
@@ -37,7 +38,6 @@ import cn.leancloud.chatkit.LCChatKit;
  * <p>
  * 描述:注册activity
  */
-
 public class RegisterActivity extends AppCompatActivity {
 
     private AutoCompleteTextView mUsernameView;
@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void initUI() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // Set up the register form.
+
         mUsernameView = (AutoCompleteTextView) findViewById(R.id.username);
 
         mPasswordView = (EditText) findViewById(R.id.password);
