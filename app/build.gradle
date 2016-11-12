@@ -56,4 +56,5 @@ dependencies {
     compile 'com.github.stuxuhai:jpinyin:1.1.8'
     compile project(':leancloudchatkit')
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.google.code.gson:gson:2.8.0'
 }

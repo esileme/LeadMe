@@ -35,13 +35,14 @@
                 android:hint="@string/goods_discription"
                 android:minHeight="66dp"/>
 
-            <EditText
-                android:id="@+id/edittext_price_publish"
+            <!--<TimePicker
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="时间"
-                android:inputType="number"/>
+                android:layout_height="match_parent"
+                ></TimePicker>-->
+            <TextView
+                android:id="@+id/current_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="match_parent"

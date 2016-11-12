@@ -37,7 +37,6 @@ import static android.R.attr.id;
 public class LoginActivity extends AppCompatActivity {
 
 
-
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
     private View mProgressView;
@@ -99,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 attemptLogin();
-                onLoginClick();
+
             }
         });
 
@@ -119,12 +118,12 @@ public class LoginActivity extends AppCompatActivity {
     private void testLink() {
 
         AVObject testObject = new AVObject("TestObject");
-        testObject.put("words","Hello World!");
+        testObject.put("words", "Hello World!");
         testObject.saveInBackground(new SaveCallback() {
             @Override
             public void done(AVException e) {
-                if(e == null){
-                    Log.d("saved","success!");
+                if (e == null) {
+                    Log.d("saved", "success!");
                 }
             }
         });
@@ -133,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * 登陆后台认证
      */
-    private void attemptLogin(){
+    private void attemptLogin() {
         mUsernameView.setError(null);
         mPasswordView.setError(null);
 
@@ -166,6 +165,16 @@ public class LoginActivity extends AppCompatActivity {
                     if (e == null) {
                         LoginActivity.this.finish();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                        //传递
+                        LCChatKit.getInstance().open(username, new AVIMClientCallback() {
+                            @Override
+                            public void done(AVIMClient avimClient, AVIMException e) {
+                                if (e == null) {
+                                } else {
+                                }
+                            }
+                        });
                     } else {
                         showProgress(false);
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -178,9 +187,10 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * 显示进度条
+     *
      * @param show
      */
-    private void showProgress(final boolean show){
+    private void showProgress(final boolean show) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);

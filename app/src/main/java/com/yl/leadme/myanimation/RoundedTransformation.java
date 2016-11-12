@@ -1,4 +1,4 @@
-package com.yl.leadme.myanimation;
+package com.yl.leadme.myAnimation;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVAnalytics;
@@ -22,12 +23,15 @@ import com.yl.leadme.R;
 import com.yl.leadme.utils.MyUtils;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 public class PublishActivity extends AppCompatActivity {
 
     private ImageView mImageViewSelect;
     private byte[] mImageBytes = null;
     private ProgressBar mProgerss;
+    private String currentTime;//获取当前时间
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,20 @@ public class PublishActivity extends AppCompatActivity {
         mProgerss = (ProgressBar) findViewById(R.id.mProgess);
         final EditText mDiscriptionEdit = (EditText) findViewById(R.id.edittext_discription_publish);
         final EditText mTitleEdit = (EditText) findViewById(R.id.edittext_title_publish);
-        final EditText mPriceEdit = (EditText) findViewById(R.id.edittext_price_publish);
+        //final EditText mPriceEdit = (EditText) findViewById(R.id.edittext_price_publish);
+        final TextView mCurrentTime = (TextView) findViewById(R.id.current_time);
+        //currentTime = String.valueOf(SystemClock.currentThreadTimeMillis());
+        //获取当前时间
+        Calendar calendar = Calendar.getInstance();
+        String year= String.valueOf(calendar.get(Calendar.YEAR));
+        String month= String.valueOf(calendar.get(Calendar.MONTH));
+        String day= String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+        String hour= String.valueOf(calendar.get(Calendar.HOUR_OF_DAY));
+        String minute= String.valueOf(calendar.get(Calendar.MINUTE));
+        String second= String.valueOf(calendar.get(Calendar.SECOND));
+        currentTime = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+        mCurrentTime.setText(currentTime);
+
         Button mButtonSelect = (Button) findViewById(R.id.button_select_publish);
 
         //选择照片按钮
@@ -71,19 +88,19 @@ public class PublishActivity extends AppCompatActivity {
                     Toast.makeText(PublishActivity.this, "请输入描述", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if ("".equals(mPriceEdit.getText().toString())) {
+                /*if ("".equals(currentTime)) {
                     Toast.makeText(PublishActivity.this, "请输入时间", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (mImageBytes == null) {
                     Toast.makeText(PublishActivity.this, "请选择一张照片", Toast.LENGTH_SHORT).show();
                     return;
-                }
+                }*/
                 mProgerss.setVisibility(View.VISIBLE);
                 AVObject product = new AVObject("Product");
                 product.put("title", mTitleEdit.getText().toString());
                 product.put("description", mDiscriptionEdit.getText().toString());
-                product.put("time", Integer.parseInt(mPriceEdit.getText().toString()));
+                product.put("time1", currentTime);
                 product.put("owner", AVUser.getCurrentUser());
                 product.put("image", new AVFile("productPic", mImageBytes));
                 product.saveInBackground(new SaveCallback() {

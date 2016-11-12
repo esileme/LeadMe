@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         initEvents();
         initTabLayout();
 
+
     }
 
     private void initTabLayout() {

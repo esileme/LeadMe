@@ -13,13 +13,15 @@ import android.widget.TextView;
 import com.avos.avoscloud.AVObject;
 import com.squareup.picasso.Picasso;
 import com.yl.leadme.R;
-import com.yl.leadme.myanimation.RoundedTransformation;
+import com.yl.leadme.myAnimation.RoundedTransformation;
 import com.yl.leadme.activity.DetailActivity;
 
 import java.util.List;
 
 /**
+ * '动态'数据展示
  *
+ *主要从服务器中获取最近动态，然后显示在动态列表中
  */
 public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.MainViewHolder> {
   private Context mContext;
@@ -38,7 +40,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
   @Override
   public void onBindViewHolder(MainViewHolder holder, final int position) {
     holder.mTitle.setText((CharSequence) mList.get(position).get("title"));
-    holder.mPrice.setText(mList.get(position).get("time") == null ? "时间" : "时间 :" + mList.get(position).get("time"));
+    holder.mPrice.setText(mList.get(position).get("time1") == null ? "时间" : ""+mList.get(position).get("time1"));
     holder.mName.setText(mList.get(position).getAVUser("owner") == null ? "" : mList.get(position).getAVUser("owner").getUsername());
     Picasso.with(mContext).load(mList.get(position).getAVFile("image") == null ? "www" : mList.get(position).getAVFile("image").getUrl()).transform(new RoundedTransformation(9, 0)).into(holder.mPicture);
     holder.mItem.setOnClickListener(new View.OnClickListener() {

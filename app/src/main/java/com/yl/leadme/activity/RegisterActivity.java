@@ -77,7 +77,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 attemptRegister();
-                onLoginClick();
+
+                //onLoginClick();//不能删除,个人信息传递
             }
         });
 
@@ -92,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
         mUsernameView.setError(null);
         mPasswordView.setError(null);
 
-        String username = mUsernameView.getText().toString();
+        final String username = mUsernameView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -115,6 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             showProgress(true);
 
+            //注册操作
             AVUser user = new AVUser();// 新建 AVUser 对象实例
             user.setUsername(username);// 设置用户名
             user.setPassword(password);// 设置密码
@@ -122,9 +124,23 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void done(AVException e) {
                     if (e == null) {
+
+
+                        //传递
+                        LCChatKit.getInstance().open(username, new AVIMClientCallback() {
+                            @Override
+                            public void done(AVIMClient avimClient, AVIMException e) {
+                                if (e == null) {
+                                } else {
+                                }
+                            }
+                        });
+
                         // 注册成功，把用户对象赋值给当前用户 AVUser.getCurrentUser()
                         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
                         RegisterActivity.this.finish();
+
                     } else {
                         // 失败的原因可能有多种，常见的是用户名已经存在。
                         showProgress(false);
@@ -166,6 +182,11 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 菜单栏被选中
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -188,7 +209,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     /**
-     * 对话登陆的后台操作
+     * 对话登陆的后台操作   将参数传到mainactivity
      */
     public void onLoginClick() {
         String clientId = mUsernameView.getText().toString();
@@ -203,14 +224,17 @@ public class RegisterActivity extends AppCompatActivity {
                 if (null == e) {
                     //finish();
                     //Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-                    /*Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);*/
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(RegisterActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
+
+
 
 
 }

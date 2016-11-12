@@ -20,7 +20,7 @@ import java.util.Map;
 import cn.leancloud.chatkit.LCChatKitUser;
 
 /**
- * Created by wli on 15/8/14.
+ * .
  * 成员列表 Adapter
  */
 public class MembersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
