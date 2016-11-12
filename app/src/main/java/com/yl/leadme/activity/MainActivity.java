@@ -14,7 +14,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVAnalytics;
@@ -109,13 +108,6 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawerLayout);
 
-        Button btnSquare = (Button) findViewById(R.id.square);
-        btnSquare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoSquareConversation();
-            }
-        });
 
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
