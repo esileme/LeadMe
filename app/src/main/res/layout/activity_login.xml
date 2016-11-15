@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
                 android:inputType="text"
+                android:completionThreshold="1"
                 android:maxLines="1"
                 android:singleLine="true" />
 

@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -94,6 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordView.setError(null);
 
         final String username = mUsernameView.getText().toString();
+
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -125,6 +127,10 @@ public class RegisterActivity extends AppCompatActivity {
                 public void done(AVException e) {
                     if (e == null) {
 
+                        if(username==null){
+                            SharedPreferences sp1 = getSharedPreferences("userName", MODE_PRIVATE);
+                            sp1.getString("userName","null");
+                        }
 
                         //传递
                         LCChatKit.getInstance().open(username, new AVIMClientCallback() {
