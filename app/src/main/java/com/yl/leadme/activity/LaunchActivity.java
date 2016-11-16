@@ -19,6 +19,7 @@ public class LaunchActivity extends Activity  {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         PageWidget pageWidget = new PageWidget(this,this,view);//怎样在activity中获取Page Widget对象？或者怎样在PageWidget中获取view对象？
+                                                                //solution:pageWidget本身就是个View对象，所以不需要获取直接调用。
 
         Display display = getWindowManager().getDefaultDisplay();
         int width = display.getWidth();
