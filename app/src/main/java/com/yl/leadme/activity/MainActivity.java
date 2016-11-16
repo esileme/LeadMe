@@ -1,6 +1,7 @@
 package com.yl.leadme.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,10 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVAnalytics;
@@ -108,6 +113,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawerLayout);
 
+        TextView userName = (TextView) findViewById(R.id.user_name);
+        ImageView userPic = (ImageView) findViewById(R.id.user_pic);
+
+        SharedPreferences sp = getSharedPreferences("userName", MODE_PRIVATE);
+        String spName = sp.getString("userName", "null");
+        userName.setText(spName);
+
+        userPic.setImageResource(R.mipmap.icon);
 
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -119,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     AVUser.getCurrentUser().logOut();
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     MainActivity.this.finish();
-                }else if(item.getItemId()==R.id.menu_square_members){
+                } else if (item.getItemId() == R.id.menu_square_members) {
                     gotoSquareConversation();
 
                 }
@@ -315,7 +328,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     /**
      * 重写返回键的功能
      */
@@ -329,4 +341,5 @@ public class MainActivity extends AppCompatActivity {
         }
         lastBackTime = currentTime;
     }
+
 }

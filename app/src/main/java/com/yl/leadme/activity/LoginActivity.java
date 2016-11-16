@@ -3,6 +3,7 @@ package com.yl.leadme.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //testLink();
         initUI();
+        initAutoComplete("history",mUsernameView);
         initData();
 
 
@@ -97,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
         mUsernameLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                saveHistory("history",mUsernameView);
                 attemptLogin();
 
             }
@@ -139,6 +143,10 @@ public class LoginActivity extends AppCompatActivity {
         final String username = mUsernameView.getText().toString();
         final String password = mPasswordView.getText().toString();
 
+        //保存用户名
+        SharedPreferences sp = getSharedPreferences("userName", MODE_PRIVATE);
+        sp.edit().putString("userName",username).commit();
+
         boolean cancel = false;
         View focusView = null;
 
@@ -163,6 +171,12 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void done(AVUser avUser, AVException e) {
                     if (e == null) {
+
+                        if(username==null){
+                            SharedPreferences sp1 = getSharedPreferences("userName", MODE_PRIVATE);
+                            sp1.getString("userName","null");
+                        }
+
                         LoginActivity.this.finish();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
@@ -264,6 +278,62 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    /**
+     * 初始化AutoCompleteTextView，最多显示5项提示，使
+     * AutoCompleteTextView在一开始获得焦点时自动提示
+     *
+     * @param field 保存在sharedPreference中的字段名
+     * @param auto  要操作的AutoCompleteTextView
+     */
+    private void initAutoComplete(String field, AutoCompleteTextView auto) {
+        SharedPreferences sp = getSharedPreferences("network_url", 0);
+        String longhistory = sp.getString("history", "nothing");
+        String[] hisArrays = longhistory.split(",");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, hisArrays);
+        //只保留最近的50条的记录
+        if (hisArrays.length > 50) {
+            String[] newArrays = new String[50];
+            System.arraycopy(hisArrays, 0, newArrays, 0, 50);
+            adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_dropdown_item_1line, newArrays);
+        }
+        auto.setAdapter(adapter);
+        auto.setDropDownHeight(350);
+        auto.setThreshold(1);
+        auto.setCompletionHint("最近的5条记录");
+        auto.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                AutoCompleteTextView view = (AutoCompleteTextView) v;
+                if (hasFocus) {
+                    view.showDropDown();
+                }
+            }
+        });
+    }
+
+
+    /**
+     * 把指定AutoCompleteTextView中内容保存到sharedPreference中指定的字符段
+     *
+     * @param field 保存在sharedPreference中的字段名
+     * @param auto  要操作的AutoCompleteTextView
+     */
+    private void saveHistory(String field, AutoCompleteTextView auto) {
+        String text = auto.getText().toString();
+        SharedPreferences sp = getSharedPreferences("network_url", 0);
+        String longhistory = sp.getString(field, "nothing");
+        if (!longhistory.contains(text + ",")) {
+            StringBuilder sb = new StringBuilder(longhistory);
+            sb.insert(0, text + ",");
+            sp.edit().putString("history", sb.toString()).commit();
+        }
+
+
     }
 
 

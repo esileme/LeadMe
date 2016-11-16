@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v23\\abc_control_background_material.xml",
-        "source": "C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable-v23\\abc_control_background_material.xml"
+        "merged": "/Users/apple/Documents/LeadMe/leancloudchatkit/build/intermediates/res/merged/androidTest/debug/drawable-v23/abc_control_background_material.xml",
+        "source": "/Users/apple/Documents/LeadMe/leancloudchatkit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable-v23/abc_control_background_material.xml"
+    },
+    {
+        "merged": "/Users/apple/Documents/LeadMe/C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v23\\abc_control_background_material.xml",
+        "source": "/Users/apple/Documents/LeadMe/C:\\Users\\yl\\Desktop\\LeadMe\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable-v23\\abc_control_background_material.xml"
     }
 ]
