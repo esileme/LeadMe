@@ -252,7 +252,7 @@ public class PageWidget extends View {
         }
 
         //必须为true，否则无法获取ACTION_MOVE及ACTION_UP事件
-        Toast.makeText(mactivity, "點擊翻頁", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mactivity, "点击翻页", Toast.LENGTH_SHORT).show();
         Activity currentActivity = (Activity)  this.getContext();
         Intent intent = new Intent(currentActivity ,LoginActivity.class);
         currentActivity.startActivity(intent);
